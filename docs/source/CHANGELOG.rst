@@ -6,7 +6,8 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Allow viewlet to work with only one slider (#30)
+  [AuroreMariscal]
 
 
 1.1 (2018-09-18)

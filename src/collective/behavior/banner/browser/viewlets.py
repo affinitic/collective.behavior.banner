@@ -26,7 +26,7 @@ class BannerViewlet(ViewletBase):
     def index(self):
         context = aq_inner(self.context)
         if ISlider.providedBy(context):
-            if context.slider_relation and len(context.slider_relation) > 1:
+            if context.slider_relation:
                 return self.slider_template()
         return self.banner_template()
 
