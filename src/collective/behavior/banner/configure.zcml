@@ -25,6 +25,14 @@
       profile="collective.behavior.banner:default"
       />
 
+  <genericsetup:upgradeStep
+      title="collective.behavior.banner: Add slider_global to registry"
+      source="2"
+      destination="3"
+      handler=".upgradehandlers.upgrade_registry_for_slider_global"
+      profile="collective.behavior.banner:default"
+      />
+
   <genericsetup:importStep
       name="collective.behavior.banner-postInstall"
       title="collective.behavior.banner post_install import step"

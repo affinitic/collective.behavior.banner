@@ -80,10 +80,10 @@ class BannerViewlet(ViewletBase):
     def banner(self, obj):  # noqa: C901
         """ return banner of this object """
         banner = {}
-        if getattr(obj, 'banner_image', False):
-            banner['banner_image'] = '{0}/@@images/banner_image'.format(
-                obj.absolute_url())
-            banner['banner_alt'] = getattr(obj, 'banner_alt', None)
+        banner['style'] = ''
+        banner['banner_image'] = None
+        banner['banner_fontcolor'] = ''
+        banner['banner_alt'] = getattr(obj, 'banner_alt', None)
         if obj.banner_title:
             banner['banner_title'] = obj.banner_title
         if obj.banner_description:
@@ -99,11 +99,20 @@ class BannerViewlet(ViewletBase):
         if obj.banner_linktext:
             banner['banner_linktext'] = obj.banner_linktext
         if obj.banner_fontcolor:
-            banner['banner_fontcolor'] = obj.banner_fontcolor
+            banner['banner_fontcolor'] = 'color: %s !important' % obj.banner_fontcolor
         if obj.banner_backgroundcolor:
-            banner['banner_backgroundcolor'] = obj.banner_backgroundcolor
+            banner['style'] = 'background-color: %s !important' % obj.banner_backgroundcolor
         if obj.banner_url:
             banner['banner_url'] = obj.banner_url
+        if getattr(obj, 'banner_image', False):
+            path = '{0}/@@images/banner_image'.format(
+                obj.absolute_url()
+            )
+            url = '%s/%s' % (path, self.banner_scale())
+            if obj.banner_image_background:
+                banner['style'] = 'background-image:url(%s)' % url
+            else:
+                banner['banner_image'] = url
         banner['banner_obj'] = obj
         return banner
 

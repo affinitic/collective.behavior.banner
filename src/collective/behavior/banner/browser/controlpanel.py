@@ -47,6 +47,12 @@ class IBannerSettingsSchema(Interface):
         vocabulary='collective.behavior.banner.all_sizes',
     )
 
+    slider_global = schema.Bool(
+        title=_(u'Slider global'),
+        description=_(u'Use global slider if there is one'),
+        default=False,
+    )
+
 
 class BannerSettingsEditForm(controlpanel.RegistryEditForm):
 

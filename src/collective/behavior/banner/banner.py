@@ -22,6 +22,7 @@ class IBanner(model.Schema):
             'banner_hide',
             'banner_stop_inheriting',
             'banner_image',
+            'banner_image_background',
             'banner_alt',
             'banner_url',
             'banner_title',
@@ -52,6 +53,14 @@ class IBanner(model.Schema):
     banner_image = namedfile.NamedBlobImage(
         title=_(u'Banner Image'),
         description=u'',
+        required=False,
+    )
+
+    banner_image_background = schema.Bool(
+        title=_(u'Background image'),
+        description=_(
+            u'Put the image in background'),
+        default=False,
         required=False,
     )
 

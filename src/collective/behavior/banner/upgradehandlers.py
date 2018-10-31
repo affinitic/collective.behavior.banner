@@ -23,3 +23,20 @@ def upgrade_registry_for_banner_scale(context):
             default='preview'),
         value='preview')
     records[key_id] = record
+
+
+def upgrade_registry_for_slider_global(context):
+    key_id = 'collective.behavior.banner.browser.controlpanel.IBannerSettingsSchema.slider_global'
+    registry = getUtility(IRegistry)
+    records = registry.records
+    if key_id in records:
+        return
+
+    record = Record(
+        field.Bool(
+            title=_(u'Slider global'),
+            description=_(u'Use global slider if there is one'),
+            default=False,
+        ),
+    )
+    records[key_id] = record
